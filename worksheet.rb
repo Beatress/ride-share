@@ -7,11 +7,22 @@
 # Which layers of data "have" within it a different layer?
 # Which layers are "next" to each other?
 
+# The top layer is the driver layer - we can group all the rides driven by one driver together
+# Below this is the rides layer - a collection of all rides taken by one driver
+# Below this is the ride data layer - data about each individual ride
+# The ride data is nested in the rides layer which is nested in the driver layer
+# THe driver layer and rides layer have within it another data structure
+# The rides in the driver layer and the individual data in each ride are next to each other
+
 ########################################################
 # Step 2: Assign a data structure to each layer
 
 # Copy your list from above, and in this section
 # determine what data structure each layer should have
+
+# Driver layer: This should be a hash with key being the driver ID and value being a collection of their rides
+# Rides layer: This should be an array of hashes with each hash representing one ride
+# Ride data layer: This should be a hash with information about the ride
 
 ########################################################
 # Step 3: Make the data structure!
@@ -22,6 +33,8 @@
 # You should be copying and pasting the literal data
 # into this data structure, such as "DR0004"
 # and "3rd Feb 2016" and "RD0022"
+
+
 
 ########################################################
 # Step 4: Total Driver's Earnings and Number of Rides
