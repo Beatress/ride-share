@@ -11,7 +11,7 @@
 # Below this is the rides layer - a collection of all rides taken by one driver
 # Below this is the ride data layer - data about each individual ride
 # The ride data is nested in the rides layer which is nested in the driver layer
-# THe driver layer and rides layer have within it another data structure
+# The driver layer and rides layer have within it another data structure
 # The rides in the driver layer and the individual data in each ride are next to each other
 
 ########################################################
