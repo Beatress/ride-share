@@ -35,7 +35,7 @@
 # and "3rd Feb 2016" and "RD0022"
 
 drivers = {
-    DR001: [
+    DR0001: [
         {
             ride_date: "3rd Feb 2016",
             cost: 10,
@@ -55,7 +55,7 @@ drivers = {
             rating: 2
         }
     ],
-    DR002: [
+    DR0002: [
         {
             ride_date: "3rd Feb 2016",
             cost: 25,
@@ -75,7 +75,7 @@ drivers = {
             rating: 3
         },
     ],
-    DR003: [
+    DR0003: [
         {
             ride_date: "4th Feb 2016",
             cost: 5,
@@ -89,7 +89,7 @@ drivers = {
             rating: 2
         }
     ],
-    DR004: [
+    DR0004: [
         {
             ride_date: "3rd Feb 2016",
             cost: 5,
@@ -111,7 +111,6 @@ drivers = {
     ]
 }
 
-pp drivers
 ########################################################
 # Step 4: Total Driver's Earnings and Number of Rides
 
@@ -121,3 +120,62 @@ pp drivers
 # - the average rating for each driver
 # - Which driver made the most money?
 # - Which driver has the highest average rating?
+highest_amounts = {
+    earnings: {
+        highest_id: nil,
+        highest_amount: -1,
+        ties: []
+    },
+    rating: {
+        highest_id: nil,
+        highest_amount: -1,
+        ties: []
+    }
+}
+
+def update_highest(highest_amounts, type, driver_id, amount)
+  current = highest_amounts[type]
+  case amount <=> current[:highest_amount]
+  when -1
+    return nil
+  when 0
+    current[:ties] << driver_id
+  when 1
+    current[:ties] = []
+    current[:highest_id] = driver_id
+    current[:highest_amount] = amount
+  end
+end
+
+def print_highest(highest_amounts, type, string)
+  current = highest_amounts[type]
+  if current[:ties].empty?
+    printf("Driver ID #{current[:highest_id]} #{string}%.2f\n", current[:highest_amount])
+  else
+    tie_string = "Drivers with IDs #{current[:highest_id]}"
+    current[:ties].shift(current[:ties].length - 1).each do |tied_id|
+      tie_string << ", #{tied_id}"
+    end
+    printf("#{tie_string}, and #{current[:ties].last} #{string}%.2f\n", current[:highest_amount])
+  end
+end
+
+# Main code starts here
+drivers.each do |driver_id, rides|
+  earnings_total = 0
+  ratings_total = 0
+  rides.each do |ride|
+    earnings_total += ride[:cost]
+    ratings_total += ride[:rating]
+  end
+  average_rating = ratings_total.to_f / rides.length
+  update_highest(highest_amounts, :earnings, driver_id, earnings_total)
+  update_highest(highest_amounts, :rating, driver_id, average_rating)
+
+  printf("Driver ID #{driver_id.to_s} gave #{rides.length} rides for $%.2f with an average rating of %.2f\n"\
+  ,earnings_total, average_rating)
+end
+
+puts ""
+print_highest(highest_amounts, :earnings, "earned the most with $")
+print_highest(highest_amounts, :rating, "had the highest average rating of ")
