@@ -34,8 +34,84 @@
 # into this data structure, such as "DR0004"
 # and "3rd Feb 2016" and "RD0022"
 
+drivers = {
+    DR001: [
+        {
+            ride_date: "3rd Feb 2016",
+            cost: 10,
+            rider_id: "RD0003",
+            rating: 3
+        },
+        {
+            ride_date: "3rd Feb 2016",
+            cost: 30,
+            rider_id: "RD0015",
+            rating: 4
+        },
+        {
+            ride_date: "5th Feb 2016",
+            cost: 45,
+            rider_id: "RD0003",
+            rating: 2
+        }
+    ],
+    DR002: [
+        {
+            ride_date: "3rd Feb 2016",
+            cost: 25,
+            rider_id: "RD0073",
+            rating: 5
+        },
+        {
+            ride_date: "4th Feb 2016",
+            cost: 15,
+            rider_id: "RD0013",
+            rating: 1
+        },
+        {
+            ride_date: "5th Feb 2016",
+            cost: 35,
+            rider_id: "RD0066",
+            rating: 3
+        },
+    ],
+    DR003: [
+        {
+            ride_date: "4th Feb 2016",
+            cost: 5,
+            rider_id: "RD0066",
+            rating: 5
+        },
+        {
+            ride_date: "5th Feb 2016",
+            cost: 50,
+            rider_id: "RD0003",
+            rating: 2
+        }
+    ],
+    DR004: [
+        {
+            ride_date: "3rd Feb 2016",
+            cost: 5,
+            rider_id: "RD0022",
+            rating: 5
+        },
+        {
+            ride_date: "4th Feb 2016",
+            cost: 10,
+            rider_id: "RD0022",
+            rating: 4
+        },
+        {
+            ride_date: "5th Feb 2016",
+            cost: 20,
+            rider_id: "RD0073",
+            rating: 5
+        }
+    ]
+}
 
-
+pp drivers
 ########################################################
 # Step 4: Total Driver's Earnings and Number of Rides
 
