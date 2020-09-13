@@ -23,7 +23,7 @@
 # Driver layer: This should be a hash with key being the driver ID and value being a collection of their rides
 # Rides layer: This should be an array of hashes with each hash representing one ride
 # Ride data layer: This should be a hash with information about the ride
-
+#
 ########################################################
 # Step 3: Make the data structure!
 
